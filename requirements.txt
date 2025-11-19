@@ -1,7 +1,7 @@
-streamlit==1.25.0
-scikit-learn==1.6.1
+streamlit==1.33.0
+scikit-learn==1.5.2
 joblib
 numpy
 pandas
-altair
-fpdf
+altair==5.3.0
+fpdf2
