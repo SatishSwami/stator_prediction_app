@@ -1,0 +1,44 @@
+/* Premium Glass UI - MITAOE Style */
+
+/* Glass card style */
+.glass {
+  background: rgba(255,255,255,0.72);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.25);
+  border: 1px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* Header title */
+.header-title {
+  font-family: "Segoe UI", Roboto, Arial;
+  font-weight: 800;
+  font-size: 32px;
+  color: #0b1220;
+}
+
+/* Subheader */
+.header-sub {
+  font-size: 14px;
+  color: #334155;
+}
+
+/* Result box */
+.result-big {
+  background: linear-gradient(90deg,#ffd8a8,#ff7a59);
+  border-radius: 10px;
+  padding: 15px;
+  color: #051923;
+  font-weight: 800;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 25px;
+  color: #334155;
+  font-size: 13px;
+  text-align: center;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stator Winding Temperature Prediction</title>
+
+<style>
+    body {
+        background: #f4f6f9;
+        font-family: Arial, sans-serif;
+        padding: 40px;
+    }
+    .container {
+        max-width: 450px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+        border-radius: 10px;
+    }
+    h2 {
+        text-align: center;
+        color: #333333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+        color: #444;
+    }
+    input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0 15px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #0078ff;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #005fcc;
+    }
+    #result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 20px;
+        color: green;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Stator Winding Temperature Prediction</h2>
+
+    <label>Stator Tooth:</label>
+    <input id="stator_tooth">
+
+    <label>Stator Yoke:</label>
+    <input id="stator_yoke">
+
+    <label>Coolant:</label>
+    <input id="coolant">
+
+    <label>Motor Speed:</label>
+    <input id="motor_speed">
+
+    <label>Torque:</label>
+    <input id="torque">
+
+    <button onclick="predict()">Predict</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function predict() {
+    const data = {
+        stator_tooth: parseFloat(document.getElementById("stator_tooth").value),
+        stator_yoke: parseFloat(document.getElementById("stator_yoke").value),
+        coolant: parseFloat(document.getElementById("coolant").value),
+        motor_speed: parseFloat(document.getElementById("motor_speed").value),
+        torque: parseFloat(document.getElementById("torque").value)
+    };
+
+    fetch("http://localhost:8000/predict", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("result").innerText =
+            "Predicted Temperature: " + data.predicted_stator_winding.toFixed(2);
+    })
+    .catch(err => {
+        document.getElementById("result").innerText = "Error: Cannot reach API.";
+    });
+}
+</script>
+
+</body>
+</html>
