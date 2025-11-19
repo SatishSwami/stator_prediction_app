@@ -9,8 +9,7 @@ import altair as alt
 from datetime import datetime
 
 # ---------------- Page Config ----------------
-st.set_page_config(page_title="Stator Winding Temperature Predictor",
-                   page_icon="🔧", layout="wide")
+st.set_page_config(page_title="Stator Winding Temperature Predictor", layout="wide", initial_sidebar_state="collapsed")
 
 BASE = Path.cwd()
 MODEL_PATH = BASE / "model.pkl"
